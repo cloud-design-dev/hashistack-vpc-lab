@@ -1,2 +1,3 @@
 shared-data/*
 02-create-hashistack-image/.pkrvars.hcl
+01-create-vpc/.terraform/
