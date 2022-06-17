@@ -16,8 +16,13 @@ variable "ibm_region" {
   type    = string
 }
 
-variable "resource_group_id" {}
-variable "subnet_id" {}
+variable "resource_group_id" {
+    type    = string
+}
+
+variable "subnet_id" {
+    type    = string
+}
 
 locals {
   timestamp = regex_replace(timestamp(), "[- TZ:]", "")

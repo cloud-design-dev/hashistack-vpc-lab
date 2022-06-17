@@ -15,11 +15,10 @@ Using Packer, Terraform, and Ansible to deploy a Hashistack Cluster in IBM Cloud
 
 1. Clone the repository and change to `01-create-vpc` directory
 
-
-    ```sh
-    git clone https://github.com/cloud-design-dev/hashistack-vpc-lab.git
-    cd hashistack-vpc-lab/01-create-vpc
-    ```
+```sh
+git clone https://github.com/cloud-design-dev/hashistack-vpc-lab.git
+cd hashistack-vpc-lab/01-create-vpc
+```
     
 1. Copy `terraform.tfvars.example` to `terraform.tfvars`:
 

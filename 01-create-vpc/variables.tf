@@ -1,5 +1,5 @@
 variable "name" {
-  description = ""
+  description = "Name that will be prepended to all deployed resources."
   type        = string
 }
 
@@ -8,19 +8,22 @@ variable "resource_group" {
   type        = string
 }
 
-variable "existing_ssh_key" {
-  description = "Name of an existing SSH key in the VPC region. If none provided, one will be created and added to the VPC Region"
+variable "ssh_key" {
+  description = "Name of an existing SSH key in the VPC region."
   type        = string
 }
 
 variable "allow_ssh_from" {
-  description = ""
+  description = "An IP address or CIDR range to allow inbound SSH connections to the frontend (bastion) host."
   type        = string
   default     = "0.0.0.0/0"
 }
 
 variable "tags" {
-  default = ["owner:ryantiffany"]
+  default = ["provider:ibm"]
 }
 
-variable "region" {}
+variable "region" {
+  description = "The IBM Cloud Region where the VPC and associated resources will be deployed."
+  type        = string
+}
