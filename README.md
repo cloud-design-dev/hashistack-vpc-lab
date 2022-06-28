@@ -16,7 +16,8 @@ Using Packer, Terraform, and Ansible to deploy a Hashistack Cluster in IBM Cloud
 I've broken down the deployment in to 3 main steps, each in its own directory:
 
 * Step 1: [Create base VPC](01-create-vpc/README.md)
-    * Deploy a VPC, public gateway, a backend and frontend subnet, a backend services security group, and a [bastion]() host to allow external communication with our VPC instances.
+    * Deploy a VPC, public gateway, a backend and frontend subnet, a backend services security group, and a 
+[bastion](https://registry.terraform.io/modules/we-work-in-the-cloud/vpc-bastion/ibm/latest) host to allow external communication with our VPC instances.
     * Generates a Packer variables file in the `shared-data` directory. (Used in Step 2)
     * Generates a Terraform `tfvars` file in the `shared-data` directory. (Used in Step 3)
 
