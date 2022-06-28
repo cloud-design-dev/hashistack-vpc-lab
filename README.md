@@ -16,11 +16,17 @@ Using Packer, Terraform, and Ansible to deploy a Hashistack Cluster in IBM Cloud
 I've broken down the deployment in to 3 main steps, each in its own directory:
 
 * Step 1: [Create base VPC](01-create-vpc/README.md)
-    * Deploy a VPC, public gateway, a backend and frontend subnet, and some simple security groups.
+    * Deploy a VPC, public gateway, a backend and frontend subnet, a backend services security group, and a [bastion]() host to allow external communication with our VPC instances.
     2. Generates a Packer variables file in the `shared-data` directory. (Used in Step 2)
     3. Generates a Terraform `tfvars` file in the `shared-data` directory. (Used in Step 3)
 
 * Step 2: [Create Hashistack Packer Image](02-create-hashistack-image/README.md)
     * Validate Packer template file.
     2. Build custom image with Consul, Nomad, Vault, Consul-template installed.
-    3. Generate a manifest file in the `shared-data` directory. The manifest file will be used as a data source for Step 3
+    3. Generate a manifest file in the `shared-data` directory. (Used in Step 3)
+
+* Step 3: [Deploy Hashistack Cluster](03-deploy-hashistack-cluster/README.md)
+    * Deploy a 3 node cluster in our VPC using the custom Packer image from Step 2.
+    2. Attach bastion maintenance group to compute nodes for Ansible SSH access.
+    3. Generate an Ansible variables file and inventory file in the `shared-data` directory. 
+    4. Run Ansible playbooks to configure Consul, Vault, and Nomad
