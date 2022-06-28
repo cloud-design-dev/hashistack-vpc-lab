@@ -7,21 +7,20 @@ packer {
   }
 }
 
-variable "ibm_api_key" {
+variable "ibmcloud_api_key" {
   type    = string
-  default = "${env("IBMCLOUD_API_KEY")}"
 }
 
 variable "ibm_region" {
-  type    = string
+  type = string
 }
 
 variable "resource_group_id" {
-    type    = string
+  type = string
 }
 
 variable "subnet_id" {
-    type    = string
+  type = string
 }
 
 locals {
@@ -30,13 +29,13 @@ locals {
 }
 
 source "ibmcloud-vpc" "hashi_base_image" {
-  api_key = "${var.ibm_api_key}"
+  api_key = "${var.ibmcloud_api_key}"
   region  = "${var.ibm_region}"
 
   subnet_id          = "${var.subnet_id}"
   resource_group_id  = "${var.resource_group_id}"
   security_group_id  = ""
-  vsi_base_image_id  = "r038-6955ded7-4d13-40a8-b318-26d9323b12e3"
+  vsi_base_image_id  = "r006-dd164da8-c4d9-46ba-87c4-03c614f0532c"
   vsi_profile        = "cx2-2x4"
   vsi_interface      = "public"
   vsi_user_data_file = ""
@@ -70,7 +69,7 @@ build {
   }
 
   post-processor "manifest" {
-    output     = "manifest.json"
+    output     = "../shared-data/manifest.json"
     strip_path = true
   }
 }

@@ -1,9 +1,14 @@
-variable "vpc_id" {
-    default = jsondecode(data.local_file.environment_info.content)["vpc_id"]
+variable "vpc_id" {}
+variable "resource_group_id" {}
+variable "name" {}
+variable "ssh_key_ids" {}
+variable "backend_subnet_id" {}
+variable "frontend_subnet_id" {}
+variable "bastion_maintenance_security_group" {}
+variable "services_security_group" {}
+variable "instance_count" {
+  default = 3
 }
-#   vpc_id            = 
-#   resource_group_id = jsondecode(data.local_file.environment_info.content)["resource_group"]
-#   name              = jsondecode(data.local_file.environment_info.content)["name"]
-#   ssh_key_id      = jsondecode(data.local_file.environment_info.content)["ssh_key_id"]
-#   subnet_id         = jsondecode(data.local_file.environment_info.content)["subnet_id"]
-
+variable "zone" {}
+variable "tags" {}
+variable "region" {}

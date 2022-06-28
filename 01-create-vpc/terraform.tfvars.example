@@ -5,10 +5,10 @@ name = ""
 resource_group = ""
 
 # Name of an existing SSH key in the VPC region 
-existing_ssh_key = ""
+ssh_key = ""
 
 # An IP address or CIDR range that will be allowed to SSH in to bastion host
-allow_ssh_from
+allow_ssh_from = ""
 
 # The IBM Cloud region where the resources will be deployed 
 region = ""

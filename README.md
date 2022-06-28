@@ -8,49 +8,19 @@ Using Packer, Terraform, and Ansible to deploy a Hashistack Cluster in IBM Cloud
 
 ## Prerequisites
 
-- IBM Cloud [API Key]() 
+- IBM Cloud [API Key](https://cloud.ibm.com/docs/account?topic=account-userapikey&interface=ui#manage-user-keys) 
 - [Packer](https://www.packer.io/downloads), [Terraform](https://www.terraform.io/downloads), and [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/index.html), installed. 
 
-## Create base VPC using Terraform 
+## Steps
 
-1. Clone the repository and change to `01-create-vpc` directory
+I've broken down the deployment in to 3 main steps, each in its own directory:
 
-```sh
-git clone https://github.com/cloud-design-dev/hashistack-vpc-lab.git
-cd hashistack-vpc-lab/01-create-vpc
-```
-    
-1. Copy `terraform.tfvars.example` to `terraform.tfvars`:
+* Step 1: [Create base VPC](01-create-vpc/README.md)
+    * Deploy a VPC, public gateway, a backend and frontend subnet, and some simple security groups.
+    2. Generates a Packer variables file in the `shared-data` directory. (Used in Step 2)
+    3. Generates a Terraform `tfvars` file in the `shared-data` directory. (Used in Step 3)
 
-   ```sh
-   cp terraform.tfvars.example terraform.tfvars
-   ```
-
-1. Edit `terraform.tfvars` to match your environment. See [inputs](#inputs) for available options.
-
-1. Plan deployment:
-
-   ```sh
-   terraform init
-   terraform plan -out default.tfplan
-   ```
-
-1. Apply deployment:
-
-   ```sh
-   terraform apply default.tfplan
-   ```
-   
-## Inputs
-
-### Required Inputs
-
-| Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
-| ibmcloud\_api\_key | IBM Cloud API key used to deploy resources. | `string` | n/a | yes |
-| name | Name that will be prepended to all deployed resources. | `string` | n/a | yes |
-| region | IBM Cloud VPC region for deployed resources. | `string` | n/a | yes |
-| allow\_ssh\_from | An IP address or CIDR that will be allowed to SSH in to bastion host. | `string` | `0.0.0.0/0` | yes |
-| existing\_ssh\_key | Name of an existing SSH key in the VPC region. If none provided, one will be generated and added to the compute instances. | `string` | n/a | no |
-
-
+* Step 2: [Create Hashistack Packer Image](02-create-hashistack-image/README.md)
+    * Validate Packer template file.
+    2. Build custom image with Consul, Nomad, Vault, Consul-template installed.
+    3. Generate a manifest file in the `shared-data` directory. The manifest file will be used as a data source for Step 3
