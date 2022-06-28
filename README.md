@@ -22,11 +22,11 @@ I've broken down the deployment in to 3 main steps, each in its own directory:
 
 * Step 2: [Create Hashistack Packer Image](02-create-hashistack-image/README.md)
     * Validate Packer template file.
-    2. Build custom image with Consul, Nomad, Vault, Consul-template installed.
-    3. Generate a manifest file in the `shared-data` directory. (Used in Step 3)
+    * Build custom image with Consul, Nomad, Vault, Consul-template installed.
+    * Generate a manifest file in the `shared-data` directory. (Used in Step 3)
 
 * Step 3: [Deploy Hashistack Cluster](03-deploy-hashistack-cluster/README.md)
     * Deploy a 3 node cluster in our VPC using the custom Packer image from Step 2.
-    2. Attach bastion maintenance group to compute nodes for Ansible SSH access.
-    3. Generate an Ansible variables file and inventory file in the `shared-data` directory. 
-    4. Run Ansible playbooks to configure Consul, Vault, and Nomad
+    * Attach bastion maintenance group to compute nodes for Ansible SSH access.
+    * Generate an Ansible variables file and inventory file in the `shared-data` directory. 
+    * Run Ansible playbooks to configure Consul, Vault, and Nomad
