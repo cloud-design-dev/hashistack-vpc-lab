@@ -17,8 +17,8 @@ I've broken down the deployment in to 3 main steps, each in its own directory:
 
 * Step 1: [Create base VPC](01-create-vpc/README.md)
     * Deploy a VPC, public gateway, a backend and frontend subnet, a backend services security group, and a [bastion]() host to allow external communication with our VPC instances.
-    2. Generates a Packer variables file in the `shared-data` directory. (Used in Step 2)
-    3. Generates a Terraform `tfvars` file in the `shared-data` directory. (Used in Step 3)
+    * Generates a Packer variables file in the `shared-data` directory. (Used in Step 2)
+    * Generates a Terraform `tfvars` file in the `shared-data` directory. (Used in Step 3)
 
 * Step 2: [Create Hashistack Packer Image](02-create-hashistack-image/README.md)
     * Validate Packer template file.
