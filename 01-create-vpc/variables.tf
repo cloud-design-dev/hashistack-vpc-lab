@@ -20,10 +20,20 @@ variable "allow_ssh_from" {
 }
 
 variable "tags" {
-  default = ["provider:ibm"]
+  default = ["project:ibmcloud-hashistack"]
 }
 
 variable "region" {
   description = "The IBM Cloud Region where the VPC and associated resources will be deployed."
+  type        = string
+}
+
+variable "ibmcloud_api_key" {
+  description = "The API key for the IBM Cloud account."
+  type        = string
+}
+
+variable "encrypt_key" {
+  description = "The encryption key used for consul gossip protocol."
   type        = string
 }
